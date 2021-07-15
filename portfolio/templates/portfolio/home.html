@@ -1,0 +1,26 @@
+{% extends "portfolio/base.html" %}
+{%block content%}
+    <h1>this is my portfolio</h1>
+
+    <a href="{% url 'blog:all_blog'%} ">blog page</a>
+    <br>
+    {% load static %}
+    <img src="{% static 'portfolio\ru-57.jpg' %}">
+    <br>
+    <a href="{% static 'portfolio/180431V_linear_algebra1.pdf' %}">open pdf</a>
+    <br>
+    {% for project in projects %}
+
+    {{project.title}}
+    <br>
+    {{project.description}}
+    <br>
+    <img src="{{project.image.url}}" alt="">
+    <br>
+    {% if project.url %}
+    <a href="{{project.url}}">link</a>
+    {% endif %}
+    {% endfor %}
+
+
+{% endblock %}  
